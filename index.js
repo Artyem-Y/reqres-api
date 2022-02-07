@@ -17,6 +17,11 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(cors());
 
+app.get("/", (req, res, next) => {
+    res.status(200).send({API: "works" });
+  }
+);
+
 app.use('/emails', emailRouter);
 
 // catch 404 and forward to error handler
@@ -38,10 +43,5 @@ app.use(function(err, req, res, next) {
 app.listen(config.port, () => {
   console.log(`Server running ${config.env} on port: ${config.port}`);
 });
-
-app.get("/", async (req, res, next) => {
-    res.status(200).send({API: "works" });
-  }
-);
 
 module.exports = app;

@@ -7,9 +7,9 @@ router.post('/send', (req, res, next) => {
   try {
     const {emails, emailBody} = req.body
     emailService.sendNotification(emails, emailBody)
-  res.send('emails sent');
+    res.send('emails sent');
   } catch(err) {
-    res.error(err)
+    next(err)
   }
 });
 
